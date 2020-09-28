@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        PerfectNumber perfectNumber = new PerfectNumber() {};
         Scanner scanner = new Scanner(System.in);
         int n;
         String s;
@@ -14,7 +15,7 @@ public class Main {
                 n = Integer.parseInt(s);
                 if (n == 0)
                     break;
-                else System.out.println(PerfectNumber.detect(n));
+                else System.out.println(perfectNumber.detect(n));
             } catch (Exception e) {
                 System.out.println("Please, enter an INTEGER between -2,147,483,648 to 2,147,483,647");
             }
@@ -23,8 +24,8 @@ public class Main {
     }
 }
 
-class PerfectNumber {
-    public static String detect(int n) {
+interface PerfectNumber {
+    default String detect(int n) {
         if (n <= 0) return "You must supply a natural number (POSITIVE integer)";
 
         int sum = 1;
