@@ -6,19 +6,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n;
+        String s;
         while (true) {
-            System.out.print("Enter a positive integer: ");
-            n = scanner.nextInt();
-            if (n == 0)
-                break;
-            else System.out.println(PerfectNumber.detect(n));
+            System.out.print("Enter a positive integer (or enter 0 to exit): ");
+            try {
+                s = scanner.nextLine();
+                n = Integer.parseInt(s);
+                if (n == 0)
+                    break;
+                else System.out.println(PerfectNumber.detect(n));
+            } catch (Exception e) {
+                System.out.println("Please, enter an INTEGER between -2,147,483,648 to 2,147,483,647");
+            }
         }
+        scanner.close();
     }
 }
 
 class PerfectNumber {
     public static String detect(int n) {
-        if (n <= 0) return "You must supply a natural number (positive integer)";
+        if (n <= 0) return "You must supply a natural number (POSITIVE integer)";
 
         int sum = 1;
         for (int i = 2; i <= Math.sqrt(n); i++)
